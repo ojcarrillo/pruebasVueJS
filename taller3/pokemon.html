@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Example templates</title>
+	  <link rel="stylesheet" href="estilos.css">
+   </head>
+   <body>
+		<div id="app">
+			<div class="actions-container">
+				<button @click="fight">Luchar</button>
+			</div>
+
+			<!-- Casilla del jugador 1 -->
+			<div :class="['box', { winner: player1.winner }]">
+				<select v-model="player1.pokemon" @change="resetWinner">
+					<option v-for="pokemon in pokemons" v-bind:value="pokemon">{{ pokemon.name }}</option>
+				</select>
+				<pokemon :class="player1.pokemon.name"></pokemon>
+			</div>
+
+			<label>VS</label>
+
+			<!-- Casilla del jugador 2 -->
+			<div :class="['box', { winner: player2.winner }]">
+				<pokemon :class="player2.pokemon.name"></pokemon>
+				<select v-model="player2.pokemon" @change="resetWinner">
+					<option v-for="pokemon in pokemons" v-bind:value="pokemon">{{ pokemon.name }}</option>
+				</select>
+			</div>
+		</div>
+ 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="pokemon.js"></script>
+   </body>
+</html>
