@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>VueJS Example</title>
+	   <link rel="stylesheet" href="estilos.css"></link>
+   </head>
+   <body>
+      <!-- vue id app -->
+	   <div id="app">
+		  <marketplace>
+			 <component
+				v-for="course in courses"
+				:is="course.type"
+				:key="course.id"
+				:title="course.title"
+				:subtitle="course.subtitle"
+				:description="course.description"
+				@add="addToCart"></component>
+		  </marketplace>
+		  <ul class="cart">
+			 <li v-for="course in cart">{{ course.title }} - {{ course.months }} meses</
+				li>
+		  </ul>
+	   </div>
+      <!-- vue js y app js -->
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="app.js"></script>
+   </body>
+</html>
